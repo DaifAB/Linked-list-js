@@ -15,6 +15,7 @@ class LList {
 	Addfirst(data){
 		this.head = new Node(data, this.head);
 		this.size++;
+		return;
 
 	}
 
@@ -34,17 +35,18 @@ class LList {
 			current.next=node;
 		}
 		this.size++;
+		return;
 
 
 	}
 
 	AddAt(data,index){
 
-		if (index > this.size) {
+		if (index > 0 && index > this.size) {
 			return;
 		}
 
-		if (index === 0) {
+		if (index == 0) {
 			this.head = new Node(data , this.head);
 			return;
 		}
@@ -62,6 +64,7 @@ class LList {
 
 		node.next=current;
 		previous.next=node;
+		return;
 
 	}
 	getAt(index){
@@ -71,21 +74,31 @@ class LList {
 
 		while(current){
 			if (i==index) {
-				console.log(current.data);
+				return current.data;
 			}
 
 			current=current.next;
 			i++;
 		}
+		return;
 
 	}
 
 	Affiche(){
 		var current=this.head;
+		var tab=[];
+		
+		
 		while(current){
-			console.log(current.data);
+			
+			tab.push(current.data);
 			current=current.next;
+			
 		}
+	
+		return tab;
+
+		
 	}
 
 	deletAt(index){
@@ -96,8 +109,9 @@ class LList {
 		var previous;
 		var i = 0;
 
-		if(index === 0){
+		if(index == 0){
 			this.head = current.next;
+			return;
 
 		} else {
 			while(i<index){
@@ -108,31 +122,64 @@ class LList {
 			previous.next=current.next;
 		}
 		this.size--;
+		return;
 
 	}
 
 	deletList(){
 		this.head=null;
 		this.size=0;
+		return;
 	}
 
 }
 
+/*for console test
+var ll = new LList();
+
+ll.Addlast(1);
+
+
+
+ll.Affiche();*/
 
 var ll = new LList();
 
+function ajoutDebut(){
+	
+	ll.Addfirst(document.getElementById('data').value);
+
+}
+
+function ajoutFin(){
+
+	ll.Addlast(document.getElementById('data').value);
+}
+
+function ajoutIn(){
+	ll.AddAt(document.getElementById('data').value , document.getElementById('index').value);
+
+}
 
 
-ll.Addlast(1);
-ll.Addlast(2);
-ll.Addlast(3);
-ll.Addlast(4);
 
-ll.AddAt(5,2);
+function removeList(){
+	ll.deletList();
+}
 
+function removeAt(){
+	ll.deletAt(document.getElementById('index').value);
+}
 
+function printList(){
+	
+	document.getElementById("res").innerHTML=ll.Affiche();
 
-ll.Affiche();
+}
 
+function getIn(){
 
+	document.getElementById("res2").innerHTML=ll.getAt(document.getElementById('index').value);	
+
+}
 
