@@ -15,6 +15,7 @@ class LList {
 	Addfirst(data){
 		this.head = new Node(data, this.head);
 		this.size++;
+		alert("Added successfully");
 		return;
 
 	}
@@ -25,6 +26,7 @@ class LList {
 
 		if(this.head===null){
 			this.head = node;
+			alert("Added successfully");
 		}
 		else {
 			current=this.head;
@@ -33,6 +35,7 @@ class LList {
 				current=current.next;
 			}
 			current.next=node;
+			alert("Added successfully");
 		}
 		this.size++;
 		return;
@@ -48,6 +51,7 @@ class LList {
 
 		if (index == 0) {
 			this.head = new Node(data , this.head);
+			alert("Added successfully");
 			return;
 		}
 
@@ -64,6 +68,7 @@ class LList {
 
 		node.next=current;
 		previous.next=node;
+		alert("Added successfully");
 		return;
 
 	}
@@ -111,6 +116,7 @@ class LList {
 
 		if(index == 0){
 			this.head = current.next;
+			alert("Deleted successfully");
 			return;
 
 		} else {
@@ -120,6 +126,7 @@ class LList {
 				i++;
 			}
 			previous.next=current.next;
+			alert("Deleted successfully");
 		}
 		this.size--;
 		return;
